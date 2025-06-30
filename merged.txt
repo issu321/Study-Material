@@ -1,0 +1,66 @@
+hello
+this is 
+simple 
+text file
+created
+
+
+using cat
+command
+this also checks
+
+using any
+error 
+key word 
+for
+
+grep 
+command
+
+this files also checks
+numbers
+1
+23
+4
+5
+^&*(
+read -p "Enter the directory path: " dir
+
+# Check if the directory exists
+if [ -d "$dir" ]; then
+    # List all files in the directory
+    echo "Files in directory $dir:"
+    ls -l $dir
+else
+    # Directory does not exist
+    echo "The directory $dir does not exist."
+fi
+
+
+
+hello
+this is 
+simple 
+text file
+created
+
+
+using cat
+command
+this also checks
+
+using any
+error 
+key word 
+for
+
+grep 
+command
+
+this files also checks
+numbers
+1
+23
+4
+5
+^&*(

@@ -1,0 +1,19 @@
+# Prompt user for file names
+read -p "Enter the first filename: " file1
+read -p "Enter the second filename: " file2
+
+# Check if both files exist
+if [ ! -f "$file1" ] || [ ! -f "$file2" ]; then
+  echo "One or both files do not exist."
+  exit 1
+fi
+
+# Compare the files
+if cmp -s "$file1" "$file2"; then
+  echo "Files are the same."
+  echo "Deleting $file2..."
+  rm "$file2"
+  echo "$file2 has been deleted."
+else
+  echo "Files are different. No action taken."
+fi
