@@ -1,0 +1,90 @@
+1. Access system info: date, history, man, who, whoami, finger, cal
+
+#!/bin/bash
+echo "Today's Date:"; date
+echo "Who am I?"; whoami
+echo "Who is logged in?"; who
+echo "Calendar:"; cal
+echo "Command history:"; history | tail -5
+echo "Manual for 'ls' command:"; man ls | head -10
+
+
+---
+
+2. Display contents using cat, vi, more, head, tail, grep, cmp, wc
+
+#!/bin/bash
+echo "Enter filename:"
+read file
+echo "Full content:"; cat $file
+echo "First 3 lines:"; head -3 $file
+echo "Last 3 lines:"; tail -3 $file
+echo "Words with 'the':"; grep "the" $file
+echo "File info:"; wc $file
+
+
+---
+
+3. Manage files & directories
+
+#!/bin/bash
+mkdir testdir
+cd testdir
+echo "Hello Ussu" > file1.txt
+cp file1.txt file2.txt
+mv file2.txt renamed.txt
+ls -l
+chmod 777 renamed.txt
+rm file1.txt
+cd ..
+rmdir testdir
+pwd
+
+
+---
+
+4. Process utilities
+
+#!/bin/bash
+echo "Process List:"; ps
+echo "My PID: $$"
+echo "Parent PID: $PPID"
+echo "Terminal: $(tty)"
+echo "Sleeping for 2 sec..."; time sleep 2
+echo "Exit now"; exit
+
+
+---
+
+5. Show files with read, write, execute
+
+#!/bin/bash
+echo "Files with full permissions:"
+for f in *; do
+  [ -x "$f" -a -r "$f" -a -w "$f" ] && echo "$f"
+done
+
+
+---
+
+6. Compare and delete
+
+#!/bin/bash
+echo "Enter file1:"
+read f1
+echo "Enter file2:"
+read f2
+cmp -s $f1 $f2 && rm $f2 && echo "Files same. $f2 deleted" || echo "Files are different"
+
+
+---
+
+7. Count characters, words, lines
+
+#!/bin/bash
+echo "Enter filename:"
+read f
+wc $f
+
+
+---
