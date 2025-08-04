@@ -1,0 +1,87 @@
+Of course, Ussu! Here's the shortest and chinnu-mote-chinnu version of all 5 programs — beginner-friendly, no imports, and super simple for lab correction.
+
+
+---
+
+✅ 1. BFS (Breadth First Search) – Short Version
+
+g = {'A':['B','C'], 'B':['D','E'], 'C':['F'], 'D':[], 'E':['F'], 'F':[]}
+v = []
+q = ['A']
+while q:
+    n = q.pop(0)
+    if n not in v:
+        v.append(n)
+        q += g[n]
+print("BFS:", v)
+
+
+---
+
+✅ 2. DFS (Depth First Search) – Short Version
+
+def dfs(n):
+    if n not in v:
+        v.append(n)
+        for x in g[n]:
+            dfs(x)
+
+g = {'A':['B','C'], 'B':['D','E'], 'C':['F'], 'D':[], 'E':['F'], 'F':[]}
+v = []
+dfs('A')
+print("DFS:", v)
+
+
+---
+
+✅ 3. Best First Search – Short & Clean
+
+g = {'A':[('B',1),('C',3)], 'B':[('D',4),('E',2)], 'C':[('F',5)], 'D':[], 'E':[('F',1)], 'F':[]}
+v = []
+q = [('A',0)]
+while q:
+    q.sort(key=lambda x:x[1])
+    n = q.pop(0)[0]
+    if n not in v:
+        v.append(n)
+        if n == 'F': break
+        for x in g[n]:
+            q.append(x)
+print("Best:", v)
+
+
+---
+
+✅ 4. Water Jug Problem – 3L & 4L Jugs
+
+v = []
+q = [(0,0)]
+while q:
+    a,b = q.pop(0)
+    if (a,b) not in v:
+        v.append((a,b))
+        print(a,b)
+        if a==2 or b==2: break
+        q += [(3,b),(a,4),(0,b),(a,0)]
+        q += [(a - min(a,4-b), b + min(a,4-b))]
+        q += [(a + min(b,3-a), b - min(b,3-a))]
+
+
+---
+
+✅ 5. Tower of Hanoi – Simple 3 Disk
+
+def h(n,a,b,c):
+    if n==1: print(a,"to",c)
+    else:
+        h(n-1,a,c,b)
+        print(a,"to",c)
+        h(n-1,b,a,c)
+
+h(3,'A','B','C')
+
+
+---
+
+Let me know if you want a .txt or .docx for these final short versions.
+
