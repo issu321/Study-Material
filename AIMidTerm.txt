@@ -1,9 +1,9 @@
-Of course, Ussu! Here's the shortest and chinnu-mote-chinnu version of all 5 programs — beginner-friendly, no imports, and super simple for lab correction.
+
 
 
 ---
 
-✅ 1. BFS (Breadth First Search) – Short Version
+1. BFS (Breadth First Search) – Short Version
 
 g = {'A':['B','C'], 'B':['D','E'], 'C':['F'], 'D':[], 'E':['F'], 'F':[]}
 v = []
@@ -18,7 +18,7 @@ print("BFS:", v)
 
 ---
 
-✅ 2. DFS (Depth First Search) – Short Version
+2. DFS (Depth First Search) – Short Version
 
 def dfs(n):
     if n not in v:
@@ -34,7 +34,7 @@ print("DFS:", v)
 
 ---
 
-✅ 3. Best First Search – Short & Clean
+3. Best First Search – Short & Clean
 
 g = {'A':[('B',1),('C',3)], 'B':[('D',4),('E',2)], 'C':[('F',5)], 'D':[], 'E':[('F',1)], 'F':[]}
 v = []
@@ -52,7 +52,7 @@ print("Best:", v)
 
 ---
 
-✅ 4. Water Jug Problem – 3L & 4L Jugs
+4. Water Jug Problem – 3L & 4L Jugs
 
 v = []
 q = [(0,0)]
@@ -69,7 +69,7 @@ while q:
 
 ---
 
-✅ 5. Tower of Hanoi – Simple 3 Disk
+5. Tower of Hanoi – Simple 3 Disk
 
 def h(n,a,b,c):
     if n==1: print(a,"to",c)
@@ -82,6 +82,4 @@ h(3,'A','B','C')
 
 
 ---
-
-Let me know if you want a .txt or .docx for these final short versions.
 
