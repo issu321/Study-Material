@@ -20,16 +20,18 @@ print("BFS:", v)
 
 2. DFS (Depth First Search) – Short Version
 
-def dfs(n):
-    if n not in v:
-        v.append(n)
-        for x in g[n]:
-            dfs(x)
-
-g = {'A':['B','C'], 'B':['D','E'], 'C':['F'], 'D':[], 'E':['F'], 'F':[]}
+g = {'A':['B','C'],'B':['D','E'],'C':['F'],'D':[],'E':['F'],'F':[]}
 v = []
+
+def dfs(n):
+ if n not in v:
+  v.append(n)
+  for x in g[n]:
+   dfs(x)
+
 dfs('A')
-print("DFS:", v)
+print(v)
+
 
 
 ---
@@ -54,17 +56,15 @@ print("Best:", v)
 
 4. Water Jug Problem – 3L & 4L Jugs
 
-v = []
-q = [(0,0)]
-while q:
-    a,b = q.pop(0)
-    if (a,b) not in v:
-        v.append((a,b))
-        print(a,b)
-        if a==2 or b==2: break
-        q += [(3,b),(a,4),(0,b),(a,0)]
-        q += [(a - min(a,4-b), b + min(a,4-b))]
-        q += [(a + min(b,3-a), b - min(b,3-a))]
+a = b = 0
+while True:
+    print(a, b)
+    if a == 2 or b == 2: break
+    if a == 0: a = 3
+    elif b < 4:
+        pour = min(a, 4 - b)
+        a -= pour; b += pour
+    else: b = 0
 
 
 ---
