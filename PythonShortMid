@@ -1,0 +1,115 @@
+
+ 
+✅ 1. Different Data Types
+a = 10          # Integer
+b = 10.5        # Float
+c = "Hello"     # String
+d = True        # Boolean
+e = [1, 2, 3]   # List
+
+print("Integer:", a)
+print("Float:", b)
+print("String:", c)
+print("Boolean:", d)
+print("List:", e)
+ 
+✅ 2. Arithmetic Operations on Numbers
+a = 20
+b = 5
+
+print("Addition:", a + b)
+print("Subtraction:", a - b)
+print("Multiplication:", a * b)
+print("Division:", a / b)
+ 
+✅ 3. String Operations
+s = "Python Programming"
+
+print("Uppercase:", s.upper())
+print("Lowercase:", s.lower())
+print("First 6 letters:", s[:6])
+print("Replace Python with Java:", s.replace("Python", "Java"))
+ 
+✅ 4. Print Date, Time for Today and Now
+from datetime import datetime
+
+now = datetime.now()
+
+print("Current Date:", now.date())
+print("Current Time:", now.time())
+ 
+✅ 5. List Operations
+fruits = ["apple", "banana", "cherry"]
+
+fruits.append("mango")
+print("After append:", fruits)
+
+fruits.remove("banana")
+print("After remove:", fruits)
+
+print("Length:", len(fruits))
+print("First item:", fruits[0])
+ 
+✅ 6. Working with Tuples
+my_tuple = (10, 20, 30)
+
+print("Tuple:", my_tuple)
+print("First Element:", my_tuple[0])
+print("Length of tuple:", len(my_tuple))
+ 
+✅ 7. Working with Dictionaries
+student = {"name": "Ussu", "age": 20, "course": "BCA"}
+
+print("Student Dictionary:", student)
+print("Name:", student["name"])
+print("Course:", student.get("course"))
+ 
+✅ 8. Working of if...else
+num = int(input("Enter a number: "))
+
+if num % 2 == 0:
+    print("Even number")
+else:
+    print("Odd number")
+ 
+✅ 9. List Methods (insert, remove, append, len, pop, clear)
+numbers = [1, 2, 3]
+
+numbers.insert(1, 100)
+print("After insert:", numbers)
+
+numbers.remove(2)
+print("After remove:", numbers)
+
+numbers.append(50)
+print("After append:", numbers)
+
+print("Length:", len(numbers))
+
+numbers.pop()
+print("After pop:", numbers)
+
+numbers.clear()
+print("After clear:", numbers)
+ 
+✅ 10. Area of Circle, Rectangle, Triangle
+# Circle
+r = 5
+circle_area = 3.14 * r * r
+print("Area of Circle:", circle_area)
+
+# Rectangle
+l = 10
+w = 4
+rectangle_area = l * w
+print("Area of Rectangle:", rectangle_area)
+
+# Triangle
+b = 6
+h = 3
+triangle_area = 0.5 * b * h
+print("Area of Triangle:", triangle_area)
+ 
+Would you like all these 10 programs in a .txt, .docx, or .pdf file?
+
+
