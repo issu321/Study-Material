@@ -93,23 +93,8 @@ numbers.clear()
 print("After clear:", numbers)
  
 ✅ 10. Area of Circle, Rectangle, Triangle
-# Circle
-r = 5
-circle_area = 3.14 * r * r
-print("Area of Circle:", circle_area)
-
-# Rectangle
-l = 10
-w = 4
-rectangle_area = l * w
-print("Area of Rectangle:", rectangle_area)
-
-# Triangle
-b = 6
-h = 3
-triangle_area = 0.5 * b * h
-print("Area of Triangle:", triangle_area)
- 
-Would you like all these 10 programs in a .txt, .docx, or .pdf file?
+print("Circle Area:", 3.14*5*5)
+print("Rectangle Area:", 10*4)
+print("Triangle Area:", 0.5*6*3)
 
 
