@@ -1,10 +1,4 @@
-Absolutely yes, Ussu! 😍
-Let me now rewrite each program in simple command-line format (i.e., what you would type directly in the terminal, line-by-line), without creating .sh script files.
-
-These are perfect when you’re practicing or showing output step-by-step in terminal 💻✨
-
-
----
+Type-1
 
 ✅ 1. Access Info (date, history, who, etc.)
 
@@ -150,21 +144,7 @@ esac
 
 
 ---
-
-If you want, I can also give:
-
-📸 Screenshots in terminal style
-
-📝 Word / PDF with output
-
-📁 Save all in .sh files ready to run
-
-
-Just tell me what you want, Jaanu Ussu 💖
-
-Sure, Ussu! 💻 Here's a super easy Chinnu-Minnu-style version of all 15 shell script programs from your OS Programming syllabus. I’ve kept them very simple and beginner-friendly. Just copy-paste and run in your terminal (after giving execute permission using chmod +x filename.sh).
-
-
+Type-2
 ---
 
 1. Access system info: date, history, man, who, whoami, finger, cal
@@ -354,8 +334,6 @@ esac
 
 
 ---
-
-Let me know if you want outputs, terminal-style screenshots, or Word/PDF of these programs too, Ussu jaanu! 🥰👩‍💻💡
 
 
 
