@@ -1,1 +1,401 @@
 
+
+Program 1 – System Info
+
+#!/bin/bash
+
+echo "=== Current Date and Time ==="
+date
+
+echo "=== Calendar ==="
+cal
+
+echo -e "\n=== Man Page Preview for 'who' ==="
+man who | head -n 10
+
+echo -e "\n=== Logged In Users ==="
+who
+
+echo -e "\n=== Current User ==="
+whoami
+
+echo -e "\n=== Finger Info for Current User ==="
+finger "$(whoami)" 2>/dev/null || echo "Finger command not available."
+
+
+---
+
+Program 2 – File Operations
+
+#!/bin/bash
+FILE="sample.txt"
+
+echo "Contents of the file using cat:"
+cat "$FILE"
+echo "---------------------------------"
+
+echo "Contents of the file using more (press 'q' to quit):"
+more "$FILE"
+echo "---------------------------------"
+
+echo "First 10 lines of the file using head:"
+head "$FILE"
+echo "---------------------------------"
+
+echo "Last 10 lines of the file using tail:"
+tail "$FILE"
+echo "---------------------------------"
+
+echo "Lines containing 'error' using grep:"
+grep "error" "$FILE"
+echo "---------------------------------"
+
+echo "Comparing the contents of the file with another file (file2.txt):"
+cmp "$FILE" file2.txt || echo "Files differ or file2.txt missing."
+echo "---------------------------------"
+
+
+---
+
+Program 3 – Directory & File Management
+
+#!/bin/bash
+
+echo "Current Directory:"
+pwd
+
+mkdir my_folder
+echo "Directory 'my_folder' created."
+
+cd my_folder || exit
+echo "Changed to directory: $(pwd)"
+
+echo "Enter some text (Ctrl+D to save):"
+cat > sample.txt
+echo "File 'sample.txt' created with content."
+
+echo "Displaying contents of sample.txt:"
+cat sample.txt
+
+cp sample.txt copy_sample.txt
+echo "File copied to 'copy_sample.txt'."
+
+echo "Files in current directory:"
+ls -l
+
+mv copy_sample.txt renamed_sample.txt
+echo "copy_sample.txt renamed to renamed_sample.txt."
+
+chmod 644 renamed_sample.txt
+echo "Permissions changed for renamed_sample.txt."
+
+rm renamed_sample.txt
+echo "renamed_sample.txt deleted."
+
+echo "Current Directory:"
+pwd
+
+cd ..
+rm -r my_folder
+echo "'my_folder' and its contents removed."
+
+echo "Script completed."
+
+
+---
+
+Program 4 – Process Management
+
+#!/bin/bash
+
+echo "List of processes"
+ps
+
+echo "ppid pid command"
+ps -eo pid,ppid,comm | column -t
+
+echo "Shows terminal type"
+tty
+
+echo "Starting background process..."
+sleep 60 &
+PID=$!
+echo "Background process started with PID $PID"
+
+echo "Timing a sleep command for 3 seconds..."
+time sleep 3
+
+echo "Killing background process with PID $PID"
+kill "$PID"
+
+
+---
+
+Program 5 – Files with RWX Permissions
+
+#!/bin/bash
+
+echo "Files with read, write, and execute permissions for user in current directory:"
+echo "--------------------------------------------------------------------------"
+
+for file in *; do
+  if [ -f "$file" ] && [ -r "$file" ] && [ -w "$file" ] && [ -x "$file" ]; then
+    echo "$file"
+  fi
+done
+
+
+---
+
+Program 6 – Compare and Delete Duplicate
+
+#!/bin/bash
+
+if [ "$#" -ne 2 ]; then
+    echo "Usage: $0 file1 file2"
+    exit 1
+fi
+
+file1="$1"
+file2="$2"
+
+if [ ! -f "$file1" ] || [ ! -f "$file2" ]; then
+    echo "Both files must exist."
+    exit 1
+fi
+
+if cmp -s "$file1" "$file2"; then
+    echo "Files are the same. Deleting $file2..."
+    rm "$file2"
+else
+    echo "Files are different. No action taken."
+fi
+
+
+---
+
+Program 7 – Count Words, Lines, Characters
+
+#!/bin/bash
+
+read -p "Enter the filename: " filename
+
+if [ ! -f "$filename" ]; then
+  echo "File does not exist."
+  exit 1
+fi
+
+chars=$(wc -m < "$filename")
+words=$(wc -w < "$filename")
+lines=$(wc -l < "$filename")
+
+echo "File: $filename"
+echo "Characters: $chars"
+echo "Words: $words"
+echo "Lines: $lines"
+
+
+---
+
+Program 8 – List Files in Directory
+
+#!/bin/bash
+
+if [ -z "$1" ]; then
+    echo "Usage: $0 <directory>"
+    exit 1
+fi
+
+DIRECTORY=$1
+
+if [ ! -d "$DIRECTORY" ]; then
+    echo "Error: $DIRECTORY is not a valid directory."
+    exit 1
+fi
+
+echo "Listing files in directory: $DIRECTORY"
+for file in "$DIRECTORY"/*; do
+    if [ -f "$file" ]; then
+        echo "$(basename "$file")"
+    fi
+done
+
+
+---
+
+Program 9 – Logged-in Users
+
+#!/bin/bash
+
+users=$(who | awk '{print $1}' | sort | uniq)
+
+if [ -z "$users" ]; then
+    echo "No users are currently logged in."
+else
+    echo "List of users currently logged in:"
+    echo "$users"
+fi
+
+
+---
+
+Program 10 – Merge 3 Files
+
+#!/bin/bash
+
+if [ $# -ne 3 ]; then
+    echo "Usage: $0 file1 file2 file3"
+    exit 1
+fi
+
+file1=$1
+file2=$2
+file3=$3
+merged="merged.txt"
+
+for f in "$file1" "$file2" "$file3"; do
+    if [ ! -f "$f" ]; then
+        echo "Error: file $f does not exist"
+        exit 1
+    fi
+done
+
+cat "$file1" "$file2" "$file3" > "$merged"
+echo "Files merged into $merged"
+
+exec 3< "$merged"
+echo "File descriptor 3 opened for $merged"
+
+echo "First 5 lines of merged file:"
+head -n 5 <&3
+
+exec 3<&-
+
+
+---
+
+Program 11 – Leap Year
+
+#!/bin/bash
+
+if [ -z "$1" ]; then
+    echo "Usage: $0 <year>"
+    exit 1
+fi
+
+year=$1
+
+if [ $((year % 400)) -eq 0 ]; then
+    echo "$year is a Leap Year"
+elif [ $((year % 100)) -eq 0 ]; then
+    echo "$year is NOT a Leap Year"
+elif [ $((year % 4)) -eq 0 ]; then
+    echo "$year is a Leap Year"
+else
+    echo "$year is NOT a Leap Year"
+fi
+
+
+---
+
+Program 12 – Zombie Process
+
+#!/bin/bash
+
+echo "Parent PID: $$"
+
+(
+  echo "Child PID: $$"
+  exit 0
+) &
+
+echo "Parent is sleeping for 20 seconds..."
+sleep 20
+echo "Parent exiting, zombie will be cleaned by init/systemd."
+
+
+---
+
+Program 13 – Factorial
+
+#!/bin/bash
+
+if [ $# -eq 0 ]; then
+    echo "Usage: $0 <number>"
+    exit 1
+fi
+
+num=$1
+fact=1
+
+while [ $num -gt 1 ]; do
+    fact=$((fact * num))
+    num=$((num - 1))
+done
+
+echo "Factorial is: $fact"
+
+
+---
+
+Program 14 – Palindrome Check
+
+#!/bin/bash
+
+if [ $# -ne 1 ]; then
+    echo "Usage: $0 string"
+    exit 1
+fi
+
+str=$1
+reversed=$(echo "$str" | rev)
+
+if [ "$str" = "$reversed" ]; then
+    echo "The string is a palindrome."
+else
+    echo "The string is not a palindrome."
+fi
+
+
+---
+
+Program 15 – Payroll System
+
+#!/bin/bash
+
+DATA_FILE="employees.txt"
+
+if [ -z "$1" ]; then
+    echo "Usage: $0 <employee_id>"
+    exit 1
+fi
+
+search_id=$1
+found=0
+
+if [ ! -s "$DATA_FILE" ]; then
+    echo "No employee data found."
+    exit 1
+fi
+
+while IFS=',' read -r emp_id name salary; do
+    if [ "$emp_id" = "$search_id" ]; then
+        hra=$((salary * 20 / 100))
+        da=$((salary * 10 / 100))
+        total=$((salary + hra + da))
+
+        echo "Employee: $name"
+        echo "Basic Salary: $salary"
+        echo "HRA (20%): $hra"
+        echo "DA (10%): $da"
+        echo "Total Salary: $total"
+        found=1
+        break
+    fi
+done < "$DATA_FILE"
+
+if [ $found -eq 0 ]; then
+    echo "Employee ID not found."
+fi
+
+
