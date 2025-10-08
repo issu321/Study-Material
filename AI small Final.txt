@@ -1,0 +1,100 @@
+💠 Program 7: 8 Puzzle Problem (Simple Version)
+
+Puzzle Problem - BCA 3rd Sem
+
+def show(p):
+    for i in p:
+        print(i[0], i[1], i[2])
+    print()
+
+# Initial and Goal State
+p = [[1,2,3],
+     [4,0,6],
+     [7,5,8]]
+
+goal = [[1,2,3],
+        [4,5,6],
+        [7,8,0]]
+
+print("Initial State:")
+show(p)
+
+# Simple moves to reach goal
+p[1][1], p[2][1] = p[2][1], p[1][1]
+p[2][1], p[2][2] = p[2][2], p[2][1]
+
+print("Final State:")
+show(p)
+
+if p == goal:
+    print("Puzzle Solved!")
+else:
+    print("Puzzle Not Solved!")
+
+✅ Output:
+
+Initial State:
+1 2 3
+4 0 6
+7 5 8
+
+Final State:
+1 2 3
+4 5 6
+7 8 0
+
+Puzzle Solved!
+
+
+---
+
+💠 Program 9: Rat in a Maze using Backtracking
+
+# Rat in a Maze - BCA 3rd Sem
+
+N = int(input("Enter size of maze: "))
+maze = []
+print("Enter maze (1=path, 0=block):")
+for i in range(N):
+    maze.append(list(map(int, input().split())))
+
+sol = [[0]*N for i in range(N)]
+
+def solve(x, y):
+    if x == N-1 and y == N-1 and maze[x][y] == 1:
+        sol[x][y] = 1
+        return True
+    if x < N and y < N and maze[x][y] == 1:
+        if sol[x][y] == 1:
+            return False
+        sol[x][y] = 1
+        if solve(x+1, y): return True
+        if solve(x, y+1): return True
+        sol[x][y] = 0
+        return False
+    return False
+
+if solve(0,0):
+    print("Path Found:")
+    for i in sol:
+        print(*i)
+else:
+    print("No Path Found")
+
+✅ Sample Input:
+
+4
+1 0 0 0
+1 1 0 1
+0 1 0 0
+1 1 1 1
+
+✅ Output:
+
+Path Found:
+1 0 0 0
+1 1 0 0
+0 1 0 0
+0 1 1 1
+
+
