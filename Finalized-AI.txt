@@ -145,7 +145,9 @@ def path(x, y):
         sol[x][y] = 1
         return True
     if x < n and y < n and maze[x][y] == 1:
-        sol[x][y] = 1# Graph Coloring Problem - BCA 3rd Sem
+        sol[x][y] = 1
+10:Graph coloring
+# Graph Coloring Problem - BCA 3rd Sem
 
 g = [[0,1,1,1],
      [1,0,1,0],
@@ -182,8 +184,6 @@ if path(0, 0):
     for r in sol: print(*r)
 else:
     print("No Path Found")
-
-10:Graph coloring
 
 
 
