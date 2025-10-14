@@ -1,0 +1,190 @@
+
+
+
+---
+
+1. BFS (Breadth First Search) – Short Version
+
+g = {'A':['B','C'], 'B':['D','E'], 'C':['F'], 'D':[], 'E':['F'], 'F':[]}
+v = []
+q = ['A']
+while q:
+    n = q.pop(0)
+    if n not in v:
+        v.append(n)
+        q += g[n]
+print("BFS:", v)
+
+
+---
+
+2. DFS (Depth First Search) – Short Version
+
+g = {'A':['B','C'],'B':['D','E'],'C':['F'],'D':[],'E':['F'],'F':[]}
+v = []
+
+def dfs(n):
+ if n not in v:
+  v.append(n)
+  for x in g[n]:
+   dfs(x)
+
+dfs('A')
+print(v)
+
+
+
+---
+
+3. Best First Search – Short & Clean
+
+g = {'A':[('B',1),('C',3)], 'B':[('D',4),('E',2)], 'C':[('F',5)], 'D':[], 'E':[('F',1)], 'F':[]}
+v = []
+q = [('A',0)]
+while q:
+    q.sort(key=lambda x:x[1])
+    n = q.pop(0)[0]
+    if n not in v:
+        v.append(n)
+        if n == 'F': break
+        for x in g[n]:
+            q.append(x)
+print("Best:", v)
+
+
+---
+
+4. Water Jug Problem – 3L & 4L Jugs
+
+def jug():
+    for a in range(4):
+        for b in range(4):
+           print("jug 4", a, "jug3", b)
+           if a == 2:
+               print("Final answer")
+               print("Got 2l in 4l jug!!!")
+               return
+jug()
+
+
+---
+
+5. Tower of Hanoi – Simple 3 Disk
+
+def hanoi(n, A, B, C):
+    if n == 1:
+        print("Move disk 1", A, "to", B)
+    else:
+        hanoi(n-1, A, C, B)
+        print("Move disk", n, "from", A, "to", C)
+        hanoi(n-1, B, A, C)
+hanoi(3, 'A', 'B', 'C')
+
+
+6:Travelling sales man problem
+# Travelling Salesman Problem - Simple
+w=[[0,10,15,20],
+   [10,0,35,25],
+   [15,35,0,30],
+   [20,25,30,0]]
+
+cost=w[0][1]+w[1][3]+w[3][2]+w[2][0]
+print("Best Path: 0 -> 1 -> 3 -> 2 -> 0")
+print("Minimum Cost:",cost)
+
+7:Puzzle program
+
+# 8 Puzzle Problem - BCA 3rd Sem
+
+p = [[1, 2, 3],
+     [4, 0, 6],
+     [7, 5, 8]]
+
+goal = [[1, 2, 3],
+        [4, 5, 6],
+        [7, 8, 0]]
+
+print("Initial State:")
+for r in p:
+    print(*r)
+
+# Move blank down, then right
+p[1][1], p[2][1] = p[2][1], p[1][1]
+p[2][1], p[2][2] = p[2][2], p[2][1]
+
+print("Final State:")
+for r in p:
+    print(*r)
+
+print("Puzzle Solved!" if p == goal else "Not Solved!")
+
+
+8:latin square program
+# Latin Square Problem - BCA 3rd Sem
+
+n = 3
+for i in range(n):
+    for j in range(n):
+        print((i + j) % n + 1, end=" ")
+    print()
+
+9:Rat in maze
+
+# Rat in a Maze - BCA 3rd Sem
+
+n = 4
+maze = [[1,0,0,0],
+        [1,1,0,1],
+        [0,1,0,0],
+        [1,1,1,1]]
+
+sol = [[0]*n for i in range(n)]
+
+def path(x, y):
+    if x == n-1 and y == n-1 and maze[x][y] == 1:
+        sol[x][y] = 1
+        return True
+    if x < n and y < n and maze[x][y] == 1:
+        sol[x][y] = 1# Graph Coloring Problem - BCA 3rd Sem
+
+g = [[0,1,1,1],
+     [1,0,1,0],
+     [1,1,0,1],
+     [1,0,1,0]]
+
+color = [0,0,0,0]
+
+def safe(v, c):
+    for i in range(4):
+        if g[v][i] == 1 and color[i] == c:
+            return False
+    return True
+
+def solve(v):
+    if v == 4:
+        print("Colors:", color)
+        return True
+    for c in range(1,4):
+        if safe(v, c):
+            color[v] = c
+            if solve(v+1): return True
+            color[v] = 0
+    return False
+
+solve(0)
+
+        if path(x+1, y): return True
+        if path(x, y+1): return True
+        sol[x][y] = 0
+    return False
+
+if path(0, 0):
+    for r in sol: print(*r)
+else:
+    print("No Path Found")
+
+10:Graph coloring
+
+
+
+
