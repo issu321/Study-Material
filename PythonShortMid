@@ -98,3 +98,188 @@ print("Rectangle Area:", 10*4)
 print("Triangle Area:", 0.5*6*3)
 
 
+
+
+
+
+---
+
+🌀 1. Module for Fibonacci Numbers
+
+fibmodule.py
+
+# fibmodule.py
+def fib(n):
+ a,b=0,1
+ for i in range(n):
+  print(a,end=" ")
+  a,b=b,a+b
+
+main.py
+
+# main.py
+import fibmodule
+fibmodule.fib(6)
+
+Output:
+
+0 1 1 2 3 5
+
+
+---
+
+🧺 2. List Methods
+
+# List Methods
+l=[1,2,3]
+l.insert(1,5)
+l.append(7)
+l.remove(2)
+print(l)
+print("Length:",len(l))
+l.pop()
+print(l)
+l.clear()
+print("Cleared:",l)
+
+Output:
+
+[1, 5, 3, 7]
+Length: 4
+[1, 5, 3]
+Cleared: []
+
+
+---
+
+🟢 3. Area of Circle, Rectangle, Triangle
+
+# Area of Shapes
+r=5
+circle=3.14*r*r
+rect=5*10
+tri=0.5*4*6
+print("Circle:",circle)
+print("Rectangle:",rect)
+print("Triangle:",tri)
+
+Output:
+
+Circle: 78.5
+Rectangle: 50
+Triangle: 12.0
+
+
+---
+
+🔢 4. Filter Even Numbers
+
+# Filter Even Numbers
+nums=[1,2,3,4,5,6]
+evens=list(filter(lambda x:x%2==0,nums))
+print("Even Numbers:",evens)
+
+Output:
+
+Even Numbers: [2, 4, 6]
+
+
+---
+
+📐 5. Math Built-in Functions
+
+# Math Built-in Functions
+import math
+print("sqrt:",math.sqrt(25))
+print("ceil:",math.ceil(4.3))
+print("floor:",math.floor(4.7))
+print("pow:",math.pow(2,3))
+print("factorial:",math.factorial(5))
+
+Output:
+
+sqrt: 5.0
+ceil: 5
+floor: 4
+pow: 8.0
+factorial: 120
+
+
+---
+
+⚠️ 6. User Defined Exception
+
+# User Defined Exception
+class Error(Exception):pass
+try:
+ n=int(input("Enter positive number: "))
+ if n<0:raise Error
+ print("Valid Number")
+except Error:
+ print("Negative not allowed")
+
+Output (example):
+
+Enter positive number: -3
+Negative not allowed
+
+
+---
+
+⏳ 7. Countdown Using While Loop
+
+# Countdown
+n=int(input("Enter number: "))
+while n>=0:
+ print(n)
+ n-=1
+
+Output:
+
+Enter number: 5
+5
+4
+3
+2
+1
+0
+
+
+---
+
+📊 8. Mean, Median, Mode
+
+# Mean, Median, Mode
+l=[2,4,4,6,8]
+mean=sum(l)/len(l)
+l.sort()
+median=l[len(l)//2]
+mode=max(l,key=l.count)
+print("Mean:",mean)
+print("Median:",median)
+print("Mode:",mode)
+
+Output:
+
+Mean: 4.8
+Median: 4
+Mode: 4
+
+
+---
+
+🔁 9. Palindrome Check
+
+# Palindrome Check
+s=input("Enter string: ")
+if s==s[::-1]:
+ print("Palindrome")
+else:
+ print("Not Palindrome")
+
+Output:
+
+Enter string: madam
+Palindrome
+
+
