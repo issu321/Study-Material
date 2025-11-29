@@ -1,3 +1,6 @@
+P1:
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,5 +48,71 @@
         <!-- Submit button calls the JavaScript function -->
         <input type="button" value="Submit" onclick="callme()">
     </form>
+</body>
+</html>
+
+
+P2:
+
+Steps for PHP and installing Configuring Xamp
+
+P3
+
+<?php
+
+$var = 2.23; // Float variable
+
+echo $var . " " . gettype($var) . "<br>"; // Display value and type
+
+settype($var, "string"); // Convert float to string
+echo gettype($var) . "<br>";
+
+settype($var, "integer"); // Convert string to integer
+echo gettype($var) . "<br>";
+
+settype($var, "float"); // Convert integer back to float
+echo gettype($var) . "<br>";
+
+settype($var, "boolean"); // Convert float to boolean
+echo $var . " " . gettype($var) . "<br>";
+
+settype($var, "null"); // Convert variable to null
+echo gettype($var) . "<br>";
+
+?>
+
+
+P4:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Multiplication Table</title>
+</head>
+
+<body>
+
+<form action="" method="post">
+
+    Enter Number: 
+    <input type="number" name="number" required><br><br>
+
+    <input type="submit" value="Submit">
+</form>
+
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    $number = intval($_POST["number"]);
+
+    echo "<h3>Multiplication Table of $number</h3>";
+
+
+    for ($i = 1; $i <= 10; $i++) {
+        echo "$number x $i = " . ($number * $i) . "<br>";
+    }
+}
+?>
+
 </body>
 </html>
